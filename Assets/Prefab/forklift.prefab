@@ -3548,6 +3548,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6917576455977042121}
   - component: {fileID: 7460936671787762605}
+  - component: {fileID: 1982035800}
   m_Layer: 0
   m_Name: forklift
   m_TagString: Untagged
@@ -3630,6 +3631,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1982035800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731549774220778099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c440379b3e5d14e4abe9b85857585edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAboveTheCar: {fileID: 6762950030829143602}
+  playerDownTheCar: {fileID: 0}
+  player: {fileID: 0}
+  getIn: 0
 --- !u!1 &8114660277211210224
 GameObject:
   m_ObjectHideFlags: 0
@@ -4338,6 +4355,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
+        type: 3}
+      propertyPath: playerDownTheCar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
+        type: 3}
+      propertyPath: forkliftControler
+      value: 
+      objectReference: {fileID: 1982035800}
     - target: {fileID: 4487887891261366891, guid: e751a3384fb362b4fab9d76b915e24b3,
         type: 3}
       propertyPath: m_UseGravity
@@ -4596,7 +4623,7 @@ PrefabInstance:
     - target: {fileID: 6821135586168480762, guid: e751a3384fb362b4fab9d76b915e24b3,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: PlayerUp
       objectReference: {fileID: 0}
     - target: {fileID: 6821135586168480762, guid: e751a3384fb362b4fab9d76b915e24b3,
         type: 3}
@@ -4643,6 +4670,12 @@ PrefabInstance:
 --- !u!4 &6237770894013996168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6188607795632896320, guid: e751a3384fb362b4fab9d76b915e24b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 248640898086266312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6762950030829143602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6821135586168480762, guid: e751a3384fb362b4fab9d76b915e24b3,
     type: 3}
   m_PrefabInstance: {fileID: 248640898086266312}
   m_PrefabAsset: {fileID: 0}

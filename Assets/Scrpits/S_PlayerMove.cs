@@ -9,9 +9,12 @@ public class S_PlayerMove : MonoBehaviour
     private Animator anim;
     [SerializeField] float movX, movY;
     private bool isMove;
-    private bool inTheCar;
-    [SerializeField] KeyCode increase;
-    [SerializeField] Transform auto;    
+    public bool inTheCar;
+    public KeyCode increase;
+    [SerializeField] ForkliftControler forkliftControler;
+
+    [SerializeField] GameObject playerAboveTheCar;
+    [SerializeField] GameObject playerDownTheCar;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,7 @@ public class S_PlayerMove : MonoBehaviour
             Move();
 
         }
+
 
 
         if (movY == 0)
@@ -58,9 +62,11 @@ public class S_PlayerMove : MonoBehaviour
 
     void GetInTheCar()
     {
-        if (Input.GetKey(increase))
+        if (Input.GetKey(increase) && forkliftControler.getIn == true)
         {
-
+            playerDownTheCar.SetActive(false);
+            playerAboveTheCar.SetActive(true);
+            inTheCar = true;
         }
     }
 }

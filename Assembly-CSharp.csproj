@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scrpits\S_PlayerMove.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scrpits\ForkliftControler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

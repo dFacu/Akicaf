@@ -2186,7 +2186,7 @@ GameObject:
   - component: {fileID: 784904825114541242}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2253,6 +2253,11 @@ MonoBehaviour:
   rotarionSpeed: 30
   movX: 0
   movY: 0
+  inTheCar: 0
+  increase: 32
+  forkliftControler: {fileID: 0}
+  playerAboveTheCar: {fileID: 6821135586168480762}
+  playerDownTheCar: {fileID: 6821135586168480762}
 --- !u!54 &4487887891261366891
 Rigidbody:
   m_ObjectHideFlags: 0
