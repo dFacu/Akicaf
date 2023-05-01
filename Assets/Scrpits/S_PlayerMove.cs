@@ -10,6 +10,8 @@ public class S_PlayerMove : MonoBehaviour
     [SerializeField] float movX, movY;
     private bool isMove;
     private bool inTheCar;
+    [SerializeField] KeyCode increase;
+    [SerializeField] Transform auto;    
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +58,10 @@ public class S_PlayerMove : MonoBehaviour
 
     void GetInTheCar()
     {
+        if (Input.GetKey(increase))
+        {
 
+        }
     }
 }
     
