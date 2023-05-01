@@ -9,16 +9,22 @@ public class S_PlayerMove : MonoBehaviour
     private Animator anim;
     [SerializeField] float movX, movY;
     private bool isMove;
+    private bool inTheCar;
     // Start is called before the first frame update
     void Start()
     {
         anim= GetComponent<Animator>();
+        inTheCar = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(inTheCar == false)
+        {
+            Move();
+
+        }
 
 
         if (movY == 0)
@@ -44,8 +50,13 @@ public class S_PlayerMove : MonoBehaviour
         transform.Rotate(0,movX * Time.deltaTime * rotarionSpeed, 0);
         transform.Translate(0, 0, movY * Time.deltaTime * moveSpeed);
 
-        anim.SetFloat("velX", movX);
-        anim.SetFloat("velY", movY);
+        anim.SetFloat("movX", movX);
+        anim.SetFloat("movY", movY);
+    }
+
+    void GetInTheCar()
+    {
+
     }
 }
     
