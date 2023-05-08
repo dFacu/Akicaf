@@ -17,7 +17,7 @@ public class BoxControler : MonoBehaviour
     public float purchasePrice;
     public float salePrice;
     public bool isPickable;
-    private S_PlayerMove player;
+
 
     void Start()
     {
@@ -57,7 +57,7 @@ public class BoxControler : MonoBehaviour
 
         if(isPickable == false)
         {
-            Debug.Log("Box en mano");
+            Debug.Log("dsdf");
         }
     }
 

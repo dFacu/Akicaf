@@ -27,9 +27,9 @@ public class S_PlayerMove : MonoBehaviour
     [SerializeField] private float distanceMax;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Hands hand;
-    public Transform handBox;
-    private BoxControler boxControler;
-    [SerializeField] private bool loAgarre;
+    [SerializeField] private Transform handBox;
+    public bool loAgarre;
+    public BoxControler boxControler;
          
 
 
@@ -41,6 +41,7 @@ public class S_PlayerMove : MonoBehaviour
     void Start()
     {
         anim= GetComponent<Animator>();
+        forkliftControler = GetComponent<ForkliftControler>();
         inTheCar = false;
     }
 
@@ -73,8 +74,6 @@ public class S_PlayerMove : MonoBehaviour
         if(loAgarre == true)
         {
             startTime = 0;
-            loAgarre = false;
-            boxControler.isPickable = false;
         }
     }
 
@@ -104,21 +103,32 @@ public class S_PlayerMove : MonoBehaviour
 
     void Grab()
     {
-        if (Input.GetKeyDown(grab))
+        RaycastHit hit;
+        bool whatToGrab = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMask);
+        boxControler = hit.transform.GetComponent<BoxControler>();
+        if (Input.GetKeyDown(grab) && loAgarre == false)
         {
 
-            RaycastHit hit;
-            bool whatToGrab = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMask);
-            
+
+
             if (whatToGrab == true) 
             {
                 
                 hit.transform.position = handBox.transform.position;
                 hit.transform.SetParent(handBox.transform);
                 loAgarre = true;
+                boxControler.isPickable= false;
             }
 
         }
+        if(Input.GetKeyDown(grab) && loAgarre == true)
+        {
+            if (whatToGrab == true)
+            {
+
+                hit.transform.position = palet.transform.position;
+                hit.transform.SetParent(palet.transform);
+            }
     }
 
     private void OnDrawGizmosSelected()
