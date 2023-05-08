@@ -57,8 +57,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scrpits\S_PlayerMove.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scrpits\Jefe.cs" />
+    <Compile Include="Assets\Scrpits\BoxControler.cs" />
     <Compile Include="Assets\Scrpits\ForkliftControler.cs" />
+    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scrpits\Hands.cs" />
+    <Compile Include="Assets\Scrpits\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

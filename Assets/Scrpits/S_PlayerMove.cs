@@ -4,18 +4,40 @@ using UnityEngine;
 
 public class S_PlayerMove : MonoBehaviour
 {
+
+    //Controles de juego
+    public KeyCode increase;
+    public KeyCode grab;
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotarionSpeed;
     private Animator anim;
     [SerializeField] float movX, movY;
     private bool isMove;
     public bool inTheCar;
-    public KeyCode increase;
-    [SerializeField] ForkliftControler forkliftControler;
 
-    [SerializeField] GameObject playerAboveTheCar;
-    [SerializeField] GameObject playerDownTheCar;
-    // Start is called before the first frame update
+    [SerializeField] private ForkliftControler forkliftControler;
+    [SerializeField] private GameObject playerUpCar;
+    [SerializeField] private GameObject playerDownCar;
+    [SerializeField] private GameObject PlayerCam;
+    [SerializeField] private GameObject forkliftCam;
+   
+    // Agarrar objecto
+    public Transform handsPoint;
+    [SerializeField] private float distanceMax;
+    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private Hands hand;
+    public Transform handBox;
+    private BoxControler boxControler;
+    [SerializeField] private bool loAgarre;
+         
+
+
+
+    // Tiempo de cargar peso
+    [SerializeField] private float startTime;
+    [SerializeField] private float productWeight;
+
     void Start()
     {
         anim= GetComponent<Animator>();
@@ -25,13 +47,13 @@ public class S_PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Grab();
+        hand.Hand();
         if(inTheCar == false)
         {
             Move();
-
         }
-
-
+        GetInTheCar();
 
         if (movY == 0)
         {
@@ -45,7 +67,15 @@ public class S_PlayerMove : MonoBehaviour
         {
             anim.SetBool("isMove", true);
         }
-        
+
+        startTime += Time.deltaTime;
+
+        if(loAgarre == true)
+        {
+            startTime = 0;
+            loAgarre = false;
+            boxControler.isPickable = false;
+        }
     }
 
     void Move()
@@ -62,12 +92,39 @@ public class S_PlayerMove : MonoBehaviour
 
     void GetInTheCar()
     {
-        if (Input.GetKey(increase) && forkliftControler.getIn == true)
+        if (Input.GetKeyDown(increase) && forkliftControler.getIn == true)
         {
-            playerDownTheCar.SetActive(false);
-            playerAboveTheCar.SetActive(true);
+            playerDownCar.SetActive(false);
+            playerUpCar.SetActive(true);
+            PlayerCam.SetActive(false);
+            forkliftCam.SetActive(true);
             inTheCar = true;
         }
+    }
+
+    void Grab()
+    {
+        if (Input.GetKeyDown(grab))
+        {
+
+            RaycastHit hit;
+            bool whatToGrab = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMask);
+            
+            if (whatToGrab == true) 
+            {
+                
+                hit.transform.position = handBox.transform.position;
+                hit.transform.SetParent(handBox.transform);
+                loAgarre = true;
+            }
+
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(handsPoint.position, handsPoint.position + handsPoint.forward * distanceMax);
     }
 }
     
