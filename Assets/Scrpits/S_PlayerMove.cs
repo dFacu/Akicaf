@@ -41,7 +41,6 @@ public class S_PlayerMove : MonoBehaviour
     void Start()
     {
         anim= GetComponent<Animator>();
-        forkliftControler = GetComponent<ForkliftControler>();
         inTheCar = false;
     }
 
@@ -105,15 +104,12 @@ public class S_PlayerMove : MonoBehaviour
     {
         RaycastHit hit;
         bool whatToGrab = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMask);
-        boxControler = hit.transform.GetComponent<BoxControler>();
         if (Input.GetKeyDown(grab) && loAgarre == false)
         {
-
-
-
             if (whatToGrab == true) 
             {
-                
+                boxControler = hit.transform.GetComponent<BoxControler>();
+
                 hit.transform.position = handBox.transform.position;
                 hit.transform.SetParent(handBox.transform);
                 loAgarre = true;
