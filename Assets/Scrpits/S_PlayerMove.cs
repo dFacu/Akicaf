@@ -121,7 +121,7 @@ public class S_PlayerMove : MonoBehaviour
             }
 
         }
-        if(Input.GetKeyDown(grab) && loAgarre == true)
+   /*     if(Input.GetKeyDown(grab) && loAgarre == true)
         {
             if (whatToGrab == true)
             {
@@ -129,7 +129,9 @@ public class S_PlayerMove : MonoBehaviour
                 hit.transform.position = palet.transform.position;
                 hit.transform.SetParent(palet.transform);
             }
+   */
     }
+   
 
     private void OnDrawGizmosSelected()
     {
