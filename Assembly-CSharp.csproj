@@ -60,9 +60,11 @@
     <Compile Include="Assets\Scrpits\Jefe.cs" />
     <Compile Include="Assets\Scrpits\BoxControler.cs" />
     <Compile Include="Assets\Scrpits\ForkliftControler.cs" />
+    <Compile Include="Assets\Scrpits\ProductsManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scrpits\Hands.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
+    <Compile Include="Assets\Scrpits\PcManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

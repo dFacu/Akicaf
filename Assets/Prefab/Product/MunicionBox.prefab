@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8752068712765518998}
   - component: {fileID: 2009027802435941898}
   m_Layer: 6
-  m_Name: boardBox
+  m_Name: MunicionBox
   m_TagString: product
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 818581523528048600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.965046, y: 0.599, z: -16.876701}
-  m_LocalScale: {x: 0.0033187498, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.0045519974, y: 0.005, z: 0.0068578576}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TheProduct: 0
+  weight: 0
   endTime: 0
+  purchasePrice: 0
+  salePrice: 0
   isPickable: 1
 --- !u!65 &2009027802435941898
 BoxCollider:
