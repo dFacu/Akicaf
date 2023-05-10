@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scrpits\Hands.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\PcManager.cs" />
+    <Compile Include="Assets\Scrpits\stockManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
