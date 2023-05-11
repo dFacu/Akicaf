@@ -6,21 +6,9 @@ using UnityEngine;
 
 public class stockManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> product;
+    public List<GameObject> product = new List<GameObject>();
 
-    private void Awake()
-    {
-
-    }
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.K)) 
-        {
-            myproduct();    
-        }
-    }
-
-    private GameObject myproduct()
+    public GameObject myproduct()
     {
         if(product.Count > 0)
         {

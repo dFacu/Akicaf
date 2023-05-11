@@ -8,6 +8,7 @@ public class S_PlayerMove : MonoBehaviour
     //Controles de juego
     public KeyCode increase;
     public KeyCode grab;
+    public KeyCode buy;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotarionSpeed;
@@ -38,9 +39,13 @@ public class S_PlayerMove : MonoBehaviour
     [SerializeField] private float startTime;
     [SerializeField] private float productWeight;
 
+
+    private stockManager stock;
+
     void Start()
     {
         anim= GetComponent<Animator>();
+        stock = GetComponent<stockManager>();
         inTheCar = false;
     }
 
@@ -114,6 +119,7 @@ public class S_PlayerMove : MonoBehaviour
                 hit.transform.SetParent(handBox.transform);
                 loAgarre = true;
                 boxControler.isPickable= false;
+                stock.myproduct();
             }
 
         }
@@ -136,10 +142,8 @@ public class S_PlayerMove : MonoBehaviour
     }
 
 
-   /* funcion para agarrar objecto de la estanteria y eliminarla de la lista 
+   // funcion para agarrar objecto de la estanteria y eliminarla de la lista 
    
-    
-    
-    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+        
 }
     

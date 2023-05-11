@@ -10,13 +10,12 @@ public class PcManager : MonoBehaviour
     [SerializeField] private float waitTime = 5f;
     [SerializeField] private float inicioTime = 0f;
 
-
     private string input;
     private string input1;
 
+    [SerializeField] private S_PlayerMove player;
     private void Start()
     {
-        
     }
 
 
@@ -25,7 +24,7 @@ public class PcManager : MonoBehaviour
         waitTime += Time.deltaTime;
 
         // se compro un producto entonce esperas
-        if (iBoughtSomeProduct == false)
+        if (iBoughtSomeProduct == false && Input.GetKeyDown(player.buy))
         {
             buyProduct();
         }
@@ -38,10 +37,11 @@ public class PcManager : MonoBehaviour
 
     }
     
-    // compra del producto
+    // compra del producto y lo deja en la base
     void buyProduct()
     {
-
+        var product =  Random.Range(0,productSpawn.Length);
+        Instantiate(productSpawn[product], purchasedProductPoint);
         iBoughtSomeProduct = true;
         waitTime += Time.deltaTime;
 
