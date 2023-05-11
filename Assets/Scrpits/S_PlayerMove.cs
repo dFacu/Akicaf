@@ -134,5 +134,12 @@ public class S_PlayerMove : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(handsPoint.position, handsPoint.position + handsPoint.forward * distanceMax);
     }
+
+
+   /* funcion para agarrar objecto de la estanteria y eliminarla de la lista 
+   
+    
+    
+    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 }
     
