@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public enum product
@@ -18,10 +20,11 @@ public class BoxControler : MonoBehaviour
     public float salePrice;
     public bool isPickable;
 
-
     void Start()
     {
         isPickable = true;
+
+
     }
 
     // Update is called once per frame
@@ -55,10 +58,7 @@ public class BoxControler : MonoBehaviour
                 break;
         }
 
-        if(isPickable == false)
-        {
-            Debug.Log("dsdf");
-        }
+       
     }
 
 

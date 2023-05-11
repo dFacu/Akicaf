@@ -11,6 +11,15 @@ public class PcManager : MonoBehaviour
     [SerializeField] private float inicioTime = 0f;
 
 
+    private string input;
+    private string input1;
+
+    private void Start()
+    {
+        
+    }
+
+
     private void Update()
     {
         waitTime += Time.deltaTime;
