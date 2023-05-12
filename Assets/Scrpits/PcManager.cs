@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PcManager : MonoBehaviour
@@ -10,18 +11,13 @@ public class PcManager : MonoBehaviour
     [SerializeField] private float waitTime = 5f;
     [SerializeField] private float inicioTime = 0f;
 
-    private string input;
-    private string input1;
 
     [SerializeField] private S_PlayerMove player;
-    private void Start()
-    {
-    }
-
+    private Dictionary<string, int> ControlStock = new Dictionary<string, int>();
 
     private void Update()
     {
-        waitTime += Time.deltaTime;
+        inicioTime += Time.deltaTime;
 
         // se compro un producto entonce esperas
         if (iBoughtSomeProduct == false && Input.GetKeyDown(player.buy))
@@ -33,8 +29,13 @@ public class PcManager : MonoBehaviour
         if(inicioTime > waitTime && iBoughtSomeProduct == true)
         {
             iBoughtSomeProduct = false;
+
         }
 
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            sale();
+        }
     }
     
     // compra del producto y lo deja en la base
@@ -43,10 +44,25 @@ public class PcManager : MonoBehaviour
         for(int i = 0; i < productSpawn.Length; i++)
         {
             Instantiate(productSpawn[i], purchasedProductPoint);
-        }
-        iBoughtSomeProduct = true;
-        waitTime += Time.deltaTime;
+            ControlStock.Add(productSpawn[i].name, i);
+            int valor = ControlStock[productSpawn[i].name];
+            Debug.Log("Estock modificado");
 
+        }
+
+        iBoughtSomeProduct = true;
+        inicioTime = 0;
+
+    }
+
+
+
+    void sale()
+    {
+        foreach (KeyValuePair<string, int> kvp in ControlStock)
+        {
+            Debug.Log("Nombre del producto: " + kvp.Key + " Ubicacion del stock: " + kvp.Value);
+        }
     }
 
 }
