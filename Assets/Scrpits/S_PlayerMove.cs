@@ -26,7 +26,8 @@ public class S_PlayerMove : MonoBehaviour
     // Agarrar objecto
     public Transform handsPoint;
     [SerializeField] private float distanceMax;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask layerMaskGrabe;
+    [SerializeField] private LayerMask layerMaskLeave;
     [SerializeField] private Hands hand;
     [SerializeField] private Transform handBox;
     public bool loAgarre;
@@ -108,7 +109,7 @@ public class S_PlayerMove : MonoBehaviour
     void Grab()
     {
         RaycastHit hit;
-        bool whatToGrab = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMask);
+        bool whatToGrab = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMaskGrabe);
         if (Input.GetKeyDown(grab) && loAgarre == false)
         {
             if (whatToGrab == true) 
@@ -116,22 +117,29 @@ public class S_PlayerMove : MonoBehaviour
                 boxControler = hit.transform.GetComponent<BoxControler>();
 
                 hit.transform.position = handBox.transform.position;
+                hit.transform.rotation = handBox.transform.rotation;
                 hit.transform.SetParent(handBox.transform);
+                hit.rigidbody.useGravity = false;
+                hit.rigidbody.isKinematic = true;
                 loAgarre = true;
                 boxControler.isPickable= false;
                 stock.myproduct();
             }
 
+
         }
-   /*     if(Input.GetKeyDown(grab) && loAgarre == true)
+        if (Input.GetKeyDown(grab) && loAgarre == true)
         {
-            if (whatToGrab == true)
+            bool whatToLeave = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMaskLeave);
+            if (whatToLeave == true)
             {
 
-                hit.transform.position = palet.transform.position;
-                hit.transform.SetParent(palet.transform);
+                handBox.transform.GetChild(0).gameObject.transform.position = transform.position;
+                handBox.transform.GetChild(0).transform.SetParent(hit.transform); 
+                boxControler.isPickable = true;
+                loAgarre = false;
             }
-   */
+        }
     }
    
 

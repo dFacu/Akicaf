@@ -673,7 +673,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.2830095, y: 3.4074685e-15, z: -1.1727334e-16, w: 0.9591171}
+  m_LocalRotation: {x: 0.28300953, y: -0.000000028583917, z: 0.000000008434341, w: 0.9591171}
   m_LocalPosition: {x: -9.54, y: 3.36, z: -16.759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -758,7 +758,7 @@ PrefabInstance:
     - target: {fileID: 5840985083827930344, guid: 5d478568eea019b4da35470ed8a2d922,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5840985083827930344, guid: 5d478568eea019b4da35470ed8a2d922,
         type: 3}
@@ -828,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 6504473639970872914, guid: 5d478568eea019b4da35470ed8a2d922,
         type: 3}
       propertyPath: m_Name
-      value: LibroBox (4)
+      value: LibroBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d478568eea019b4da35470ed8a2d922, type: 3}
@@ -868,8 +868,7 @@ Transform:
   m_LocalPosition: {x: 1.25, y: -0.04166667, z: 0}
   m_LocalScale: {x: 1.7076, y: 0.10508, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1667755898}
+  m_Children: []
   m_Father: {fileID: 1297193912}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1296,6 +1295,37 @@ Transform:
   m_Father: {fileID: 1908378353}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &958645893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958645894}
+  m_Layer: 0
+  m_Name: PointBuy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958645894
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958645893}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.169, y: 0.20833333, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297193912}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006026834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,7 +1462,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073734283}
-  m_LocalRotation: {x: 0.2830095, y: 3.4074685e-15, z: -1.1727334e-16, w: 0.9591171}
+  m_LocalRotation: {x: 0.28300953, y: -0.000000028583917, z: 0.000000008434341, w: 0.9591171}
   m_LocalPosition: {x: -9.54, y: 3.36, z: -16.759}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1618,7 +1648,7 @@ PrefabInstance:
     - target: {fileID: 6504473639970872914, guid: 5d478568eea019b4da35470ed8a2d922,
         type: 3}
       propertyPath: m_Name
-      value: LibroBox (1)
+      value: LibroBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d478568eea019b4da35470ed8a2d922, type: 3}
@@ -1725,6 +1755,7 @@ Transform:
   m_Children:
   - {fileID: 1958094406}
   - {fileID: 425225252}
+  - {fileID: 958645894}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1745,10 +1776,11 @@ MonoBehaviour:
   - {fileID: 818581523528048600, guid: 402e380c5ce5aca49a4d6e3f30c1a64f, type: 3}
   - {fileID: 8309969130930153189, guid: 87a132a5f0039014598728ad472381e9, type: 3}
   - {fileID: 2355287508240358795, guid: 4e5845f81a116524f87d459f1f74997a, type: 3}
-  purchasedProductPoint: {fileID: 1667755898}
+  purchasedProductPoint: {fileID: 958645894}
   iBoughtSomeProduct: 0
   waitTime: 0
   inicioTime: 0
+  player: {fileID: 506350163}
 --- !u!1 &1312892321
 GameObject:
   m_ObjectHideFlags: 0
@@ -2028,37 +2060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1667755897
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1667755898}
-  m_Layer: 0
-  m_Name: PointProducto
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1667755898
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1667755897}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 425225252}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1797828694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2494,6 +2495,37 @@ Transform:
   m_Father: {fileID: 1908378353}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &1954879615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954879616}
+  m_Layer: 8
+  m_Name: PaletPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954879616
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954879615}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2004580389}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1958094405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,7 +2647,7 @@ GameObject:
   - component: {fileID: 2004580388}
   - component: {fileID: 2004580387}
   - component: {fileID: 2004580386}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Palet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2696,7 +2728,8 @@ Transform:
   m_LocalPosition: {x: -7.7858276, y: 0.8436961, z: 13.931}
   m_LocalScale: {x: 2.1056, y: 0.17114, z: 1.8839557}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1954879616}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2731,6 +2764,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shelf_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954886331435113221, guid: e59d6e941ac2e5d4f976d2c5e4b57156,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4443157852823781823, guid: e59d6e941ac2e5d4f976d2c5e4b57156,
         type: 3}
@@ -2929,7 +2967,7 @@ PrefabInstance:
     - target: {fileID: 6504473639970872914, guid: 5d478568eea019b4da35470ed8a2d922,
         type: 3}
       propertyPath: m_Name
-      value: LibroBox (2)
+      value: LibroBox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d478568eea019b4da35470ed8a2d922, type: 3}
@@ -3726,6 +3764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
         type: 3}
+      propertyPath: buy
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
+        type: 3}
       propertyPath: PlayerCam
       value: 
       objectReference: {fileID: 1073734283}
@@ -3741,9 +3784,24 @@ PrefabInstance:
       objectReference: {fileID: 1555636902}
     - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
         type: 3}
+      propertyPath: P_grab.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
+        type: 3}
       propertyPath: forkliftControler
       value: 
       objectReference: {fileID: 1982035800}
+    - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
+        type: 3}
+      propertyPath: layerMaskGrabe.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417224858768100154, guid: e751a3384fb362b4fab9d76b915e24b3,
+        type: 3}
+      propertyPath: layerMaskLeave.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6188607795632896320, guid: e751a3384fb362b4fab9d76b915e24b3,
         type: 3}
       propertyPath: m_RootOrder

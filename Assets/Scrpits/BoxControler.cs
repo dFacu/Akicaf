@@ -20,9 +20,11 @@ public class BoxControler : MonoBehaviour
     public float salePrice;
     public bool isPickable;
 
+    [SerializeField] private Rigidbody rb;
     void Start()
     {
         isPickable = true;
+        rb= GetComponent<Rigidbody>();
 
 
     }
@@ -58,7 +60,10 @@ public class BoxControler : MonoBehaviour
                 break;
         }
 
-       
+       if(isPickable == true)
+        {
+            rb.useGravity = true;
+        }
     }
 
 

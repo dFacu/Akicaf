@@ -40,8 +40,10 @@ public class PcManager : MonoBehaviour
     // compra del producto y lo deja en la base
     void buyProduct()
     {
-        var product =  Random.Range(0,productSpawn.Length);
-        Instantiate(productSpawn[product], purchasedProductPoint);
+        for(int i = 0; i < productSpawn.Length; i++)
+        {
+            Instantiate(productSpawn[i], purchasedProductPoint);
+        }
         iBoughtSomeProduct = true;
         waitTime += Time.deltaTime;
 
