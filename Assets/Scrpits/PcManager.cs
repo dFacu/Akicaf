@@ -44,12 +44,10 @@ public class PcManager : MonoBehaviour
         for(int i = 0; i < productSpawn.Length; i++)
         {
             Instantiate(productSpawn[i], purchasedProductPoint);
-            ControlStock.Add(productSpawn[i].name, i);
-            int valor = ControlStock[productSpawn[i].name];
             Debug.Log("Estock modificado");
 
         }
-
+        
         iBoughtSomeProduct = true;
         inicioTime = 0;
 
