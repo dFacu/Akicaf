@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6788157663709038194}
   - component: {fileID: 7609881584026913239}
   - component: {fileID: 5656325087065210141}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Lamp_01a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6788157663709038194
 Transform:
@@ -95,12 +95,12 @@ GameObject:
   - component: {fileID: 1386093537550545130}
   - component: {fileID: 2578224938957619749}
   - component: {fileID: 8500244785633242284}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1386093537550545130
 Transform:
@@ -131,7 +131,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 200
   m_Range: 22.097013
-  m_SpotAngle: 78.01947
+  m_SpotAngle: 96.39157
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
