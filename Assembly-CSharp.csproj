@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scrpits\Hands.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\MenuManager.cs" />
+    <Compile Include="Assets\Scrpits\DiaControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
