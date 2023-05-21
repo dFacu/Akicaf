@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7517084563351406384}
   - component: {fileID: 380520668490182847}
   - component: {fileID: 5533708374795464750}
+  - component: {fileID: -4571386320755966105}
   m_Layer: 6
   m_Name: "Pesta\xF1aBox"
   m_TagString: product
@@ -114,3 +115,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-4571386320755966105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8309969130930153189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0205d2b27e66a7948a6f5aeedbceeff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  product: {fileID: 11400000, guid: cd29d2e99005382458682e612bb29f44, type: 2}
+  _TheProduct: 2
+  _weight: 0
+  _endTime: 0
+  _purchasePrice: 0
+  _salePrice: 0
+  _isPickable: 0

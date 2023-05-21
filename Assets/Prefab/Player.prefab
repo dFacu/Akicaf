@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1806526383}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.088, z: 0.209}
+  m_LocalPosition: {x: 0.223, y: 1.088, z: 0.703}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2398,11 +2398,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   increase: 32
   grab: 102
+  buy: 114
+  activateTablet: 113
   moveSpeed: 2
   rotarionSpeed: 30
   movX: 0
   movY: 0
   inTheCar: 0
+  tablet: {fileID: 0}
   forkliftControler: {fileID: 0}
   playerUpCar: {fileID: 0}
   playerDownCar: {fileID: 6821135586168480762}
@@ -2410,11 +2413,16 @@ MonoBehaviour:
   forkliftCam: {fileID: 0}
   handsPoint: {fileID: 1879136531}
   distanceMax: 3
-  layerMask:
+  layerMaskGrabe:
     serializedVersion: 2
     m_Bits: 64
+  layerMaskLeave:
+    serializedVersion: 2
+    m_Bits: 256
   hand: {fileID: 1879136534}
   handBox: {fileID: 1806526384}
+  loAgarre: 0
+  boxProduct: {fileID: 0}
   startTime: 0
   productWeight: 0
 --- !u!54 &4487887891261366891

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a94454441e848344c8940dac9a20d37a, type: 3}
-  m_Name: Pomela
+  m_Name: Nothing
   m_EditorClassIdentifier: 
-  TheProduct: 1
-  ProductName: Pomela
-  weight: 20
-  endTime: 15
+  TheProduct: 4
+  ProductName: Nothing
+  weight: 0
+  endTime: 0
   purchasePrice: 0
   salePrice: 0
   isPickable: 0

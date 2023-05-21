@@ -2,28 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class S_PlayerMove : MonoBehaviour
+public class S_PlayerMove : Entity
 {
 
     //Controles de juego
-    public KeyCode increase;
     public KeyCode grab;
     public KeyCode buy;
-
-    [SerializeField] private float moveSpeed;      
-    [SerializeField] private float rotarionSpeed;   
+    
+    // movimiento-----------------------------
+  
     private Animator anim;                          
-    [SerializeField] float movX, movY;              
-    private bool isMove;                           
-    public bool inTheCar;
 
-    [SerializeField] private ForkliftControler forkliftControler;
-    [SerializeField] private GameObject playerUpCar;
-    [SerializeField] private GameObject playerDownCar;
-    [SerializeField] private GameObject PlayerCam;
-    [SerializeField] private GameObject forkliftCam;
-   
-    // Agarrar objecto
+    // Agarrar objecto-------------------------------------
     public Transform handsPoint;
     [SerializeField] private float distanceMax;
     [SerializeField] private LayerMask layerMaskGrabe;
@@ -31,8 +21,9 @@ public class S_PlayerMove : MonoBehaviour
     [SerializeField] private Hands hand;
     [SerializeField] private Transform handBox;
     public bool loAgarre;
-    public BoxControler boxControler;
-         
+    public Product boxProduct;
+    // Agarrar objecto-------------------------------------
+
 
 
 
@@ -47,20 +38,25 @@ public class S_PlayerMove : MonoBehaviour
     {
         anim= GetComponent<Animator>();
         stock = GetComponent<stockManager>();
-        inTheCar = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Grab();
-        hand.Hand();
-        if(inTheCar == false)
-        {
-            Move();
-        }
-        GetInTheCar();
 
+        Move(); 
+
+        Grab();
+        OrderTablet();
+        hand.Hand();
+
+        anim.SetFloat("movX", movX);
+        anim.SetFloat("movY", movY);  
+        
+        GetInTheCar();
+        getIn = false;
+        inTheCar = false;
         if (movY == 0)
         {
             isMove = false;
@@ -82,29 +78,17 @@ public class S_PlayerMove : MonoBehaviour
         }
     }
 
-    void Move()
-    {
-        isMove = true;
-        movX = Input.GetAxis("Horizontal");
-        movY = Input.GetAxis("Vertical");
-        transform.Rotate(0,movX * Time.deltaTime * rotarionSpeed, 0);
-        transform.Translate(0, 0, movY * Time.deltaTime * moveSpeed);
 
-        anim.SetFloat("movX", movX);
-        anim.SetFloat("movY", movY);
-    }
-
-    void GetInTheCar()
+    void OnTriggerStay(Collider other)
     {
-        if (Input.GetKeyDown(increase) && forkliftControler.getIn == true)
+        if (other.CompareTag("Forklift"))
         {
-            playerDownCar.SetActive(false);
-            playerUpCar.SetActive(true);
-            PlayerCam.SetActive(false);
-            forkliftCam.SetActive(true);
-            inTheCar = true;
+            getIn = true;
+           
         }
     }
+
+
 
     void Grab()
     {
@@ -114,7 +98,7 @@ public class S_PlayerMove : MonoBehaviour
         {
             if (whatToGrab == true) 
             {
-                boxControler = hit.transform.GetComponent<BoxControler>();
+                boxProduct = hit.transform.GetComponent<Product>();
 
                 hit.transform.position = handBox.transform.position;
                 hit.transform.rotation = handBox.transform.rotation;
@@ -122,7 +106,7 @@ public class S_PlayerMove : MonoBehaviour
                 hit.rigidbody.useGravity = false;
                 hit.rigidbody.isKinematic = true;
                 loAgarre = true;
-                boxControler.isPickable= false;
+                boxProduct._isPickable = false;
                 stock.myproduct();
             }
 
@@ -136,7 +120,7 @@ public class S_PlayerMove : MonoBehaviour
 
                 handBox.transform.GetChild(0).gameObject.transform.position = transform.position;
                 handBox.transform.GetChild(0).transform.SetParent(hit.transform); 
-                boxControler.isPickable = true;
+                boxProduct._isPickable = true;
                 loAgarre = false;
             }
         }

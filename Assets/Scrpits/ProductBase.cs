@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-
-public enum product
+public enum products
 {
     Municion,
     Pomelas,
     Pestañas,
-    Libro
+    Libro,
+    nothing
 }
 
 [CreateAssetMenu(menuName = "product")]
 public class ProductBase : ScriptableObject
 {
-    [SerializeField] private product TheProduct;
-    [SerializeField] private float weight;
-    [SerializeField] private float endTime;
-    [SerializeField] private float purchasePrice;
-    [SerializeField] private float salePrice;
-    [SerializeField] private bool isPickable;
+    public products TheProduct;
+    public string ProductName;
+    public float weight;
+    public float endTime;
+    public float purchasePrice;
+    public float salePrice;
+    public bool isPickable;
+
 }
