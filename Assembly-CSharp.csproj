@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Assets\Scrpits\S_PlayerMove.cs" />
     <Compile Include="Assets\Scrpits\Jefe.cs" />
-    <Compile Include="Assets\Scrpits\remplazar\BoxControler.cs" />
     <Compile Include="Assets\Scrpits\PcManager.cs" />
     <Compile Include="Assets\Scrpits\stockManager.cs" />
     <Compile Include="Assets\Scrpits\ForkliftControler.cs" />
@@ -67,8 +66,9 @@
     <Compile Include="Assets\Scrpits\Hands.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\MenuManager.cs" />
-    <Compile Include="Assets\Scrpits\OrderBase.cs" />
-    <Compile Include="Assets\Scrpits\Entity.cs" />
+    <Compile Include="Assets\Scrpits\ProductBase.cs" />
+    <Compile Include="Assets\Scrpits\OrderGenerator.cs" />
+    <Compile Include="Assets\Scrpits\Product.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
