@@ -10,11 +10,11 @@ public class S_PlayerMove : MonoBehaviour
     public KeyCode grab;
     public KeyCode buy;
 
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float rotarionSpeed;
-    private Animator anim;
-    [SerializeField] float movX, movY;
-    private bool isMove;
+    [SerializeField] private float moveSpeed;      
+    [SerializeField] private float rotarionSpeed;   
+    private Animator anim;                          
+    [SerializeField] float movX, movY;              
+    private bool isMove;                           
     public bool inTheCar;
 
     [SerializeField] private ForkliftControler forkliftControler;

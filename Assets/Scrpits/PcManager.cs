@@ -12,6 +12,8 @@ public class PcManager : MonoBehaviour
     [SerializeField] private float inicioTime = 0f;
 
 
+
+
     [SerializeField] private S_PlayerMove player;
     private Dictionary<string, int> ControlStock = new Dictionary<string, int>();
 
