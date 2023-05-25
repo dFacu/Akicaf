@@ -56,11 +56,11 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scrpits\S_PlayerMove.cs" />
+    <Compile Include="Assets\Scrpits\Character\S_PlayerMove.cs" />
     <Compile Include="Assets\Scrpits\ProductBase.cs" />
-    <Compile Include="Assets\Scrpits\Jefe.cs" />
+    <Compile Include="Assets\Scrpits\Character\Jefe.cs" />
+    <Compile Include="Assets\Scrpits\Character\Entity.cs" />
     <Compile Include="Assets\Scrpits\PcManager.cs" />
-    <Compile Include="Assets\Scrpits\stockManager.cs" />
     <Compile Include="Assets\Scrpits\OrderGenerator.cs" />
     <Compile Include="Assets\Scrpits\ForkliftControler.cs" />
     <Compile Include="Assets\Scrpits\DiaControl.cs" />
@@ -69,7 +69,9 @@
     <Compile Include="Assets\Scrpits\Product.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\MenuManager.cs" />
-    <Compile Include="Assets\Scrpits\Player\Entity.cs" />
+    <Compile Include="Assets\Scrpits\ButtonC.cs" />
+    <Compile Include="Assets\Scrpits\GateControl.cs" />
+    <Compile Include="Assets\Scrpits\TruckControler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

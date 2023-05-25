@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class OrderGenerator : MonoBehaviour
 {
@@ -16,22 +17,18 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] private int idDictionary;
     [SerializeField] private TextMeshProUGUI ID;
 
+    [SerializeField] private DiaControl DControl;
+
     private void Start()
     {
-        for(int i = 0; i <2; i++)
-        {
-            NewOrder();
-
-        }
-
+        DControl.eventNewOrder += NewOrder;
     }
-
-    void NewOrder()
+    public void NewOrder()
     {
         for(int i = 0; i <numberOfLines; i++)
         {
-            int randomIndex = Random.Range(0, products.Length); // que producto
-            amount = Random.Range(0, 11); // cantidad de producto
+            int randomIndex = UnityEngine.Random.Range(0, products.Length); // que producto
+            amount = UnityEngine.Random.Range(0, 11); // cantidad de producto
 
             lineName[i].text = products[randomIndex].TheProduct.ToString();
             lineQuantity[i].text = amount.ToString();
@@ -41,7 +38,7 @@ public class OrderGenerator : MonoBehaviour
         deliveryNumber++;
         idDictionary++;
         OrderBase.Add(deliveryNumber, idDictionary);
-
+        Debug.Log("EVENTO es llamdo por (DiaControl) y lo recibio de (OrderGenerator)");
         AddOrderBase();
     }
 

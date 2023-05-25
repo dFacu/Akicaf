@@ -7,7 +7,7 @@ public class Product : MonoBehaviour
     [SerializeField] private ProductBase product;
     [SerializeField] private products _TheProduct;
     [SerializeField] private float _weight;
-    [SerializeField] private float _endTime;
+    public float _endTime;
     [SerializeField] private float _purchasePrice;
     [SerializeField] private float _salePrice;
     public bool _isPickable;

@@ -7,6 +7,7 @@ using UnityEngine.XR;
 public class ForkliftControler : Entity
 {
     [SerializeField] private Rigidbody rb;
+
     void Update()
     {
         if (movY != 0)
@@ -31,5 +32,4 @@ public class ForkliftControler : Entity
             getIn = true;
         }
     }
-
 }

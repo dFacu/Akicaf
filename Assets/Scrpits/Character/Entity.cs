@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public KeyCode increase;
-    private KeyCode lower;
+    public KeyCode lower;
     [SerializeField] private KeyCode activateTablet;
     [SerializeField] private GameObject tablet;
 
@@ -24,12 +25,16 @@ public class Entity : MonoBehaviour
     [SerializeField] private float moveSpeed;
     public float rotarionSpeed;
 
+
     private void Start()
     {
         playerUpCar.SetActive(false);
         forkliftCam.SetActive(false);
         inTheCar = false;
+        getIn = false;
+
         lower = increase;
+
     }
     public void Move()
     {
@@ -52,23 +57,24 @@ public class Entity : MonoBehaviour
             inTheCar = true;
             getIn = false;
             isMove = false;
-
-
         }
     }
 
+
     public void OutCar()
     {
-        if (Input.GetKeyDown(lower))
+        if (Input.GetKeyDown(lower) && inTheCar == true)
         {
             playerUpCar.SetActive(false);
             playerDownCar.SetActive(true);
             PlayerCam.SetActive(true);
             forkliftCam.SetActive(false);
             inTheCar = false;
-            isMove= false;
+            isMove = false;
         }
     }
+
+
 
     public void OrderTablet()
     {

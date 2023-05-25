@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class DiaControl : MonoBehaviour
 {
+    //[SerializeField] private Product pro;
+    [SerializeField] private S_PlayerMove player;
+
     [SerializeField] private float seconds = 0;
     [SerializeField] private int minutes = 0;
     [SerializeField] private int hours = 7;
@@ -13,20 +17,33 @@ public class DiaControl : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dia;
     [SerializeField] private int velocity;
     [SerializeField] private int endTime;
-    [SerializeField] private int truckArrival;
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] private int truckArrivalTime = 25;
+    [SerializeField] private float waitTime;
+    [SerializeField] private int timeNewOrder = 600;
 
-    }
+    public event Action eventNewOrder;
+    public event Action eventBrokenBox;
+    public event Action eventTruck;
 
-    // Update is called once per frame
+
     void Update()
     {
         seconds  += Time.deltaTime * velocity;
-
+        waitTime += Time.deltaTime * velocity;
         Clock();
         TextClock();
+
+
+        if(waitTime >= timeNewOrder && eventNewOrder != null)
+        {
+            eventNewOrder?.Invoke();
+            waitTime= 0;
+        }
+        if(seconds >= truckArrivalTime)
+        {
+            eventTruck?.Invoke();
+        }
+
     }
 
     void NextDay()
@@ -62,5 +79,9 @@ public class DiaControl : MonoBehaviour
     {
         if(n < 10) return "0" + n.ToString();
         else return n.ToString();
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }

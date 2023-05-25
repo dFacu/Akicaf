@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,23 +12,23 @@ public class PcManager : MonoBehaviour
     [SerializeField] private float waitTime = 5f;
     [SerializeField] private float inicioTime = 0f;
 
-
-
-
+    [SerializeField] private ButtonC button;
     [SerializeField] private S_PlayerMove player;
     private Dictionary<string, int> ControlStock = new Dictionary<string, int>();
 
+    private void Awake()
+    {
+        button.OnButtonPressed.AddListener(buyProduct);
+    }
     private void Update()
     {
         inicioTime += Time.deltaTime;
 
-        // se compro un producto entonce esperas
-        if (iBoughtSomeProduct == false && Input.GetKeyDown(player.buy))
-        {
-            buyProduct();
-        }
-
         // tiempo de espera para comprar 
+        if(inicioTime > waitTime)
+        {
+            button.n_isPressed = false;
+        }
         if(inicioTime > waitTime && iBoughtSomeProduct == true)
         {
             iBoughtSomeProduct = false;
@@ -41,16 +42,15 @@ public class PcManager : MonoBehaviour
     }
     
     // compra del producto y lo deja en la base
-    void buyProduct()
+    public void buyProduct()
     {
-        for(int i = 0; i < productSpawn.Length; i++)
+        for(int i = 0; i < 4; i++)
         {
             Instantiate(productSpawn[i], purchasedProductPoint);
-            Debug.Log("Estock modificado");
-
         }
-        
+        Debug.Log("Estock modificado");
         iBoughtSomeProduct = true;
+        Debug.Log("Lo llama (buttonC) y lo recibe (PcManager)");
         inicioTime = 0;
 
     }

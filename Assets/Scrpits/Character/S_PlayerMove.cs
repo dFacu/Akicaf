@@ -1,15 +1,14 @@
-    using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class S_PlayerMove : Entity
 {
+    [SerializeField] private DiaControl DControl;
 
-    //Controles de juego
     public KeyCode grab;
     public KeyCode buy;
-    
-    // movimiento-----------------------------
   
     private Animator anim;                          
 
@@ -22,41 +21,34 @@ public class S_PlayerMove : Entity
     [SerializeField] private Transform handBox;
     public bool loAgarre;
     public Product boxProduct;
-    // Agarrar objecto-------------------------------------
-
-
-
-
     // Tiempo de cargar peso
-    [SerializeField] private float startTime;
+    public float gripTime;
+    public float exhausted;
     [SerializeField] private float productWeight;
 
-
-    private stockManager stock;
 
     void Start()
     {
         anim= GetComponent<Animator>();
-        stock = GetComponent<stockManager>();
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        inTheCar = false;
+        gripTime += Time.deltaTime;
 
         Move(); 
-
         Grab();
         OrderTablet();
+
+        GetInTheCar();
         hand.Hand();
 
+
         anim.SetFloat("movX", movX);
-        anim.SetFloat("movY", movY);  
-        
-        GetInTheCar();
-        getIn = false;
-        inTheCar = false;
+        anim.SetFloat("movY", movY);
+ 
         if (movY == 0)
         {
             isMove = false;
@@ -70,11 +62,9 @@ public class S_PlayerMove : Entity
             anim.SetBool("isMove", true);
         }
 
-        startTime += Time.deltaTime;
-
-        if(loAgarre == true)
+        if(loAgarre == true && gripTime >= exhausted)
         {
-            startTime = 0;
+            Debug.Log("lpm ********");
         }
     }
 
@@ -106,8 +96,9 @@ public class S_PlayerMove : Entity
                 hit.rigidbody.useGravity = false;
                 hit.rigidbody.isKinematic = true;
                 loAgarre = true;
+                gripTime = 0;
                 boxProduct._isPickable = false;
-                stock.myproduct();
+                exhausted = boxProduct._endTime;
             }
 
 
@@ -122,10 +113,10 @@ public class S_PlayerMove : Entity
                 handBox.transform.GetChild(0).transform.SetParent(hit.transform); 
                 boxProduct._isPickable = true;
                 loAgarre = false;
+                exhausted = 0;
             }
         }
     }
-   
 
     private void OnDrawGizmosSelected()
     {
