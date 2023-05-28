@@ -12,7 +12,7 @@ public class GateControl : MonoBehaviour
     }
     public void openGate()
     {
-       transform.Translate(new Vector3(0, 0, -150 * Time.deltaTime));
+       transform.Translate(new Vector3(0, 0, 180 * Time.deltaTime));
         Debug.Log("Lo llama (openGate) y lo recibe (Button)");
     }
 
