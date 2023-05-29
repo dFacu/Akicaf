@@ -19,9 +19,14 @@ public class Product : MonoBehaviour
         _endTime = product.endTime;
         _purchasePrice = product.purchasePrice;
         _salePrice = product.salePrice;
-        _isPickable = product.isPickable;
-
-    
+        _isPickable = product.isPickable; 
     }
 
+    private void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("PointBox"))
+        {
+            transform.SetParent(coll.transform);
+        }
+    }
 }

@@ -19,7 +19,7 @@ public class DiaControl : MonoBehaviour
     [SerializeField] private int endTime;
     [SerializeField] private int truckArrivalTime = 25;
     [SerializeField] private float waitTime;
-    [SerializeField] private int timeNewOrder = 600;
+    [SerializeField] private int timeNewOrder = 300;
 
     public event Action eventNewOrder;
     public event Action eventBrokenBox;
@@ -33,7 +33,7 @@ public class DiaControl : MonoBehaviour
         Clock();
         TextClock();
 
-
+        // manda el pedido
         if(waitTime >= timeNewOrder && eventNewOrder != null)
         {
             eventNewOrder?.Invoke();

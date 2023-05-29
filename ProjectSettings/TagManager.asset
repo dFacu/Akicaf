@@ -7,6 +7,7 @@ TagManager:
   - product
   - Hands
   - Forklift
+  - PointBox
   layers:
   - Default
   - TransparentFX

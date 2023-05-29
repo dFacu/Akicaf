@@ -90,11 +90,11 @@ public class S_PlayerMove : Entity
             {
                 boxProduct = hit.transform.GetComponent<Product>();
 
-                hit.transform.position = handBox.transform.position;
-                hit.transform.rotation = handBox.transform.rotation;
-                hit.transform.SetParent(handBox.transform);
-                hit.rigidbody.useGravity = false;
-                hit.rigidbody.isKinematic = true;
+                boxProduct.GetComponent<Rigidbody>().useGravity= false;
+                boxProduct.GetComponent<Rigidbody>().isKinematic= true;
+                boxProduct.transform.position = handBox.transform.position;
+                boxProduct.transform.rotation = handBox.transform.rotation;
+                boxProduct.transform.SetParent(handBox.transform);
                 loAgarre = true;
                 gripTime = 0;
                 boxProduct._isPickable = false;
@@ -109,8 +109,8 @@ public class S_PlayerMove : Entity
             if (whatToLeave == true)
             {
 
-                handBox.transform.GetChild(0).gameObject.transform.position = transform.position;
-                handBox.transform.GetChild(0).transform.SetParent(hit.transform); 
+                boxProduct.GetComponent<Rigidbody>().useGravity= true;
+                boxProduct.GetComponent<Rigidbody>().isKinematic = false; 
                 boxProduct._isPickable = true;
                 loAgarre = false;
                 exhausted = 0;
