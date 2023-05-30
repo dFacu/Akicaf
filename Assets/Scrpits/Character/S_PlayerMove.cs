@@ -108,9 +108,9 @@ public class S_PlayerMove : Entity
             bool whatToLeave = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMaskLeave);
             if (whatToLeave == true)
             {
-
                 boxProduct.GetComponent<Rigidbody>().useGravity= true;
-                boxProduct.GetComponent<Rigidbody>().isKinematic = false; 
+                boxProduct.GetComponent<Rigidbody>().isKinematic = false;
+                boxProduct.transform.SetParent(null);
                 boxProduct._isPickable = true;
                 loAgarre = false;
                 exhausted = 0;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Product : MonoBehaviour
@@ -22,11 +23,17 @@ public class Product : MonoBehaviour
         _isPickable = product.isPickable; 
     }
 
-    private void OnCollisionEnter(Collision coll)
+    private void OnTriggerEnter(Collider other)
     {
-        if (coll.collider.CompareTag("PointBox"))
+        if (other.gameObject.CompareTag("PointBox"))
         {
-            transform.SetParent(coll.transform);
+            if(_isPickable == true)
+            {
+                this.transform.SetParent(other.transform);
+                this.GetComponent<Rigidbody>().freezeRotation = true;
+                // Hacer un metodo en pallet para que cuando esto ocurer se agregue es producto a la lista del pedido
+            }
+
         }
     }
 }
