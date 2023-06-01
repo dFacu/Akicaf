@@ -13,7 +13,6 @@ public class Product : MonoBehaviour
     [SerializeField] private float _purchasePrice;
     [SerializeField] private float _salePrice;
     public bool _isPickable;
-
     private void Start()
     {
         _TheProduct = product.TheProduct;
@@ -23,7 +22,6 @@ public class Product : MonoBehaviour
         _salePrice = product.salePrice;
         _isPickable = product.isPickable; 
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PointBox"))
@@ -32,6 +30,7 @@ public class Product : MonoBehaviour
             {
                 this.transform.SetParent(other.transform);
                 this.GetComponent<Rigidbody>().freezeRotation = true;
+
                 // Hacer un metodo en pallet para que cuando esto ocurer se agregue es producto a la lista del pedido
             }
 

@@ -6,18 +6,23 @@ using System;
 public class PalletControler : MonoBehaviour
 {
     [SerializeField] private List<GameObject> isProductList = new List<GameObject>();
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    private Product product;
     public void AddProduct(GameObject gameObject)
     {
         isProductList.Add(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        product = other.GetComponent<Product>();
+        if (other.gameObject.CompareTag("product"))
+        {
+            if (product._isPickable == true)
+            {
+                AddProduct(other.gameObject);
+            }
+
+        }
+    }
+
 }
