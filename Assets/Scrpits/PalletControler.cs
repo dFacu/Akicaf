@@ -7,6 +7,7 @@ public class PalletControler : MonoBehaviour
 {
     [SerializeField] private List<GameObject> isProductList = new List<GameObject>();
     private Product product;
+
     public void AddProduct(GameObject gameObject)
     {
         isProductList.Add(gameObject);
