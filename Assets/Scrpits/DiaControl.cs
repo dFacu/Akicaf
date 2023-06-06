@@ -1,8 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using TMPro;
 using System;
+using UnityEditor;
+using UnityEngine.Rendering.Universal;
 
 public class DiaControl : MonoBehaviour
 {
@@ -25,6 +28,8 @@ public class DiaControl : MonoBehaviour
     public event Action eventBrokenBox;
     public event Action eventTruck;
 
+    private bool ud;
+    [SerializeField] PostProcess post;
 
     void Update()
     {
@@ -37,13 +42,19 @@ public class DiaControl : MonoBehaviour
         if(waitTime >= timeNewOrder && eventNewOrder != null)
         {
             eventNewOrder?.Invoke();
-            waitTime= 0;
+            waitTime = 0;
+            ud = true;
         }
         if(seconds >= truckArrivalTime)
         {
             eventTruck?.Invoke();
         }
 
+        if(waitTime >= 3 && ud == true)
+        {
+            post.desability();
+            ud= false;
+        }
     }
 
     void NextDay()

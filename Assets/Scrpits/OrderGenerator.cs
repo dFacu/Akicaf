@@ -23,6 +23,7 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] private Button following;
     [SerializeField] private Button back;
 
+    [SerializeField] PostProcess post;
 
     private List<OrderData> orders = new List<OrderData>(); // Lista para almacenar las órdenes generadas
     private int currentOrderIndex = -1; // Índice de la orden actual mostrada en pantalla
@@ -49,6 +50,7 @@ public class OrderGenerator : MonoBehaviour
         currentOrderIndex = orders.Count - 1; // Actualizar el índice de la orden actual
 
         ShowCurrentOrder();
+        post.action();
     }
 
 

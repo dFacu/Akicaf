@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scrpits\Product.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
     <Compile Include="Assets\Scrpits\MenuManager.cs" />
+    <Compile Include="Assets\Scrpits\PostProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

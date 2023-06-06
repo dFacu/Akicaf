@@ -15,7 +15,6 @@ public class PcManager : MonoBehaviour
     [SerializeField] private ButtonC button;
     [SerializeField] private S_PlayerMove player;
     private Dictionary<string, int> ControlStock = new Dictionary<string, int>();
-
     private void Awake()
     {
         button.OnButtonPressed.AddListener(buyProduct);
