@@ -9,27 +9,34 @@ public class OrderGenerator : MonoBehaviour
 {
     //  Tomar de la lista que scritable object toca y darle los datos a alguna linea 
     [SerializeField] private int numberOfLines = 7;
-    [SerializeField] private TextMeshProUGUI[] lineName;
-    [SerializeField] private TextMeshProUGUI[] lineQuantity;
+    [SerializeField] private TextMeshProUGUI header;
+    public TextMeshProUGUI[] lineName;
+    public TextMeshProUGUI[] lineQuantity;
     [SerializeField] private ProductBase[] products;
     [SerializeField] private int deliveryNumber;
-    [SerializeField] private int amount;
-    [SerializeField] private int idDictionary;
-    [SerializeField] private TextMeshProUGUI ID;
+    public int amount;
 
     [SerializeField] private DiaControl DControl;
-
+    [SerializeField] PostProcess post;
+    [SerializeField] private S_PlayerMove player;
 
     [SerializeField] private Button following;
     [SerializeField] private Button back;
 
-    [SerializeField] PostProcess post;
 
+    public GameObject palletObject;
+    private PalletControler palletScript;
     private List<OrderData> orders = new List<OrderData>(); // Lista para almacenar las órdenes generadas
     private int currentOrderIndex = -1; // Índice de la orden actual mostrada en pantalla
     private void Start()
     {
         DControl.eventNewOrder += NewOrder;
+        palletScript = palletObject.GetComponent<PalletControler>();
+        player.thisPallet += ThisPallet;
+    }
+    private void Update()
+    {
+
     }
     public void NewOrder()
     {
@@ -38,22 +45,39 @@ public class OrderGenerator : MonoBehaviour
         for (int i = 0; i <numberOfLines; i++)
         {
             int randomIndex = UnityEngine.Random.Range(0, products.Length); // que producto
-            amount = UnityEngine.Random.Range(0, 11); // cantidad de producto
+            amount = UnityEngine.Random.Range(0, 3); // cantidad de producto
 
-            lineName[i].text = products[randomIndex].TheProduct.ToString();
-            lineQuantity[i].text = amount.ToString();
+            if(amount > 0)
+            {
+                lineName[i].text = products[randomIndex].TheProduct.ToString();
+                lineQuantity[i].text = amount.ToString();
 
-            orderData.lineNames.Add(products[randomIndex].TheProduct.ToString());
-            orderData.lineQuantities.Add(amount);
+                int existing = orderData.lineNames.IndexOf(products[randomIndex].TheProduct.ToString());
+                if(existing >= 0)
+                {
+                    // Sumar la cantidad al producto existente
+                    orderData.lineQuantity[existing] += amount;
+                }
+                else
+                {
+                    // Agregar el nuevo producto al pedido
+                    orderData.lineNames.Add(products[randomIndex].TheProduct.ToString());
+                    orderData.lineQuantity.Add(amount);
+                }
+
+            }
+            else
+            {
+                // Si amount es 0, no se muestra la línea
+                lineName[i].text = string.Empty;
+                lineQuantity[i].text = string.Empty;
+            }
         }
         orders.Add(orderData); // Agregar la orden completa a la lista de órdenes
         currentOrderIndex = orders.Count - 1; // Actualizar el índice de la orden actual
-
         ShowCurrentOrder();
         post.action();
     }
-
-
     public void NextOrder()
     {
         currentOrderIndex++;
@@ -65,17 +89,22 @@ public class OrderGenerator : MonoBehaviour
 
         ShowCurrentOrder();
     }
-
     public void ShowCurrentOrder()
     {
         if (currentOrderIndex >= 0 && currentOrderIndex < orders.Count)
         {
+            header.text = "Remito: " + currentOrderIndex;
             OrderData currentOrder = orders[currentOrderIndex];
-
-            for (int i = 0; i < numberOfLines; i++)
+            int linesToShow = (int)MathF.Min(numberOfLines, currentOrder.lineNames.Count);
+            for(int i = 0; i < linesToShow; i++)
             {
                 lineName[i].text = currentOrder.lineNames[i];
-                lineQuantity[i].text = currentOrder.lineQuantities[i].ToString();
+                lineQuantity[i].text = currentOrder.lineQuantity[i].ToString();
+            }
+            for (int i = linesToShow; i < numberOfLines; i++)
+            {
+                lineName[i].text = string.Empty;
+                lineQuantity[i].text = string.Empty;
             }
         }
         else
@@ -93,12 +122,33 @@ public class OrderGenerator : MonoBehaviour
 
         ShowCurrentOrder();
     }
+    public void ThisPallet()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            if (currentOrderIndex >= 0 && currentOrderIndex < orders.Count)
+            {
+                OrderData currentOrder = orders[currentOrderIndex];
 
+                palletScript.AddOrderData(currentOrder);
+                orders.RemoveAt(currentOrderIndex);
+                if (currentOrderIndex < orders.Count - 1)
+                {
+                    currentOrderIndex++;
+                    ShowCurrentOrder();
+                }
+                else
+                {
+                    header.text = "Pedidos finalizados";
+                }
+            }
+        }
+    }
     [System.Serializable]
     public class OrderData
     {
         public List<string> lineNames = new List<string>(); // Nombres de los productos de cada línea
-        public List<int> lineQuantities = new List<int>(); // Cantidades de cada producto de cada línea
+        public List<int> lineQuantity = new List<int>(); // Cantidades de cada producto de cada línea
     }
 
 }

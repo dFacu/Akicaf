@@ -8,7 +8,6 @@ public class S_PlayerMove : Entity
     [SerializeField] private DiaControl DControl;
 
     public KeyCode grab;
-    public KeyCode buy;
   
     private Animator anim;                          
 
@@ -26,7 +25,7 @@ public class S_PlayerMove : Entity
     public float exhausted;
     [SerializeField] private float productWeight;
 
-
+    public event Action thisPallet;
     void Start()
     {
         anim= GetComponent<Animator>();
@@ -65,6 +64,13 @@ public class S_PlayerMove : Entity
         if(loAgarre == true && gripTime >= exhausted)
         {
             Debug.Log("lpm ********");
+        }
+
+        RaycastHit hit;
+        bool isThePallet = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMaskGrabe);
+        if(isThePallet)
+        {
+            thisPallet?.Invoke();
         }
     }
 

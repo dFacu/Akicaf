@@ -24,6 +24,7 @@ public class Product : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("PointBox"))
         {
             if(_isPickable == true)
