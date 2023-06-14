@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using TMPro;
 using static OrderGenerator;
+using System.Drawing;
 
 public class PalletControler : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PalletControler : MonoBehaviour
     private Product product;
     [SerializeField]private List<string> palletLineName = new List<string>();
     [SerializeField]private List<int> palletLineQuantity = new List<int>();
+    [SerializeField] private Collicionpallet pointCol;
 
     public void AddProduct(GameObject gameObject)
     {
@@ -33,6 +35,8 @@ public class PalletControler : MonoBehaviour
         product = other.GetComponent<Product>();
         if (other.gameObject.CompareTag("product"))
         {
+            pointCol.currentPallet.transform.SetParent(other.transform);
+
             if (product._isPickable == true)
             {
                 AddProduct(other.gameObject);

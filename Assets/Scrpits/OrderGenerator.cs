@@ -36,7 +36,7 @@ public class OrderGenerator : MonoBehaviour
     }
     private void Update()
     {
-        palletObject = forklift.currentPallet.GetComponent<GameObject>();
+        palletObject = forklift.currentPallet;
          palletScript = palletObject.GetComponent<PalletControler>();
     }
     public void NewOrder()

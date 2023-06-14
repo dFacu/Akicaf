@@ -6,10 +6,11 @@ public class Collicionpallet : MonoBehaviour
     public GameObject currentPallet;
     public bool isHoldingPallet = false;
     [SerializeField] private Transform point;
+    [SerializeField] private ForkliftControler entity;
     private void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && entity.inTheCar == true)
         {
             if (isHoldingPallet == true)
             {
