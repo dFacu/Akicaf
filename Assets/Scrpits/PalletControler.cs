@@ -12,6 +12,7 @@ public class PalletControler : MonoBehaviour
     private Product product;
     [SerializeField]private List<string> palletLineName = new List<string>();
     [SerializeField]private List<int> palletLineQuantity = new List<int>();
+
     public void AddProduct(GameObject gameObject)
     {
         isProductList.Add(gameObject);

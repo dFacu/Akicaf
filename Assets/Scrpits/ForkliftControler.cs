@@ -7,6 +7,7 @@ using UnityEngine.XR;
 public class ForkliftControler : Entity
 {
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private Collicionpallet pointCol;
 
     void Update()
     {
@@ -22,7 +23,9 @@ public class ForkliftControler : Entity
         }
         GetInTheCar();
         OrderTablet();
+
     }
+
 
 
     void OnTriggerStay(Collider other)
@@ -32,4 +35,5 @@ public class ForkliftControler : Entity
             getIn = true;
         }
     }
+
 }

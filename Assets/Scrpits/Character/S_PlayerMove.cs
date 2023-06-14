@@ -6,6 +6,7 @@ using UnityEngine;
 public class S_PlayerMove : Entity
 {
     [SerializeField] private DiaControl DControl;
+    [SerializeField] private ForkliftControler forklift;
 
     public KeyCode grab;
   
@@ -24,7 +25,7 @@ public class S_PlayerMove : Entity
     public float gripTime;
     public float exhausted;
     [SerializeField] private float productWeight;
-
+    public bool isThePallet;
     public event Action thisPallet;
     void Start()
     {
@@ -65,9 +66,6 @@ public class S_PlayerMove : Entity
         {
             Debug.Log("lpm ********");
         }
-
-        RaycastHit hit;
-        bool isThePallet = Physics.Raycast(handsPoint.position, handsPoint.forward, out hit, distanceMax, layerMaskGrabe);
         if(isThePallet)
         {
             thisPallet?.Invoke();
@@ -124,14 +122,11 @@ public class S_PlayerMove : Entity
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(handsPoint.position, handsPoint.position + handsPoint.forward * distanceMax);
     }
-
-
-   // funcion para agarrar objecto de la estanteria y eliminarla de la lista 
    
         
 }

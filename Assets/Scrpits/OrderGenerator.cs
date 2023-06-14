@@ -19,6 +19,7 @@ public class OrderGenerator : MonoBehaviour
     [SerializeField] private DiaControl DControl;
     [SerializeField] PostProcess post;
     [SerializeField] private S_PlayerMove player;
+    [SerializeField] private Collicionpallet forklift;
 
     [SerializeField] private Button following;
     [SerializeField] private Button back;
@@ -31,12 +32,12 @@ public class OrderGenerator : MonoBehaviour
     private void Start()
     {
         DControl.eventNewOrder += NewOrder;
-        palletScript = palletObject.GetComponent<PalletControler>();
         player.thisPallet += ThisPallet;
     }
     private void Update()
     {
-
+        palletObject = forklift.currentPallet.GetComponent<GameObject>();
+         palletScript = palletObject.GetComponent<PalletControler>();
     }
     public void NewOrder()
     {
@@ -132,7 +133,7 @@ public class OrderGenerator : MonoBehaviour
 
                 palletScript.AddOrderData(currentOrder);
                 orders.RemoveAt(currentOrderIndex);
-                if (currentOrderIndex < orders.Count - 1)
+                if (orders.Count > 0)
                 {
                     currentOrderIndex++;
                     ShowCurrentOrder();
