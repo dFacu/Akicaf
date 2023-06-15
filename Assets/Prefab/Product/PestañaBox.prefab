@@ -134,3 +134,4 @@ MonoBehaviour:
   _purchasePrice: 0
   _salePrice: 0
   _isPickable: 0
+  pallet: {fileID: 0}

@@ -32,12 +32,12 @@ public class PalletControler : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        product = other.GetComponent<Product>();
+            product = other.GetComponent<Product>();
+
         if (other.gameObject.CompareTag("product"))
         {
-            pointCol.currentPallet.transform.SetParent(other.transform);
 
-            if (product._isPickable == true)
+            if (product._isPickable == true && product._isPicking == false)
             {
                 AddProduct(other.gameObject);
             }

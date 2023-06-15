@@ -26,7 +26,7 @@ public class OrderGenerator : MonoBehaviour
 
 
     public GameObject palletObject;
-    private PalletControler palletScript;
+    [SerializeField]private PalletControler palletScript;
     private List<OrderData> orders = new List<OrderData>(); // Lista para almacenar las órdenes generadas
     private int currentOrderIndex = -1; // Índice de la orden actual mostrada en pantalla
     private void Start()
@@ -36,8 +36,8 @@ public class OrderGenerator : MonoBehaviour
     }
     private void Update()
     {
-        palletObject = forklift.currentPallet;
-         palletScript = palletObject.GetComponent<PalletControler>();
+         palletObject = forklift.currentPallet;
+         palletScript = palletObject.GetComponentInChildren<PalletControler>();
     }
     public void NewOrder()
     {
@@ -133,6 +133,7 @@ public class OrderGenerator : MonoBehaviour
 
                 palletScript.AddOrderData(currentOrder);
                 orders.RemoveAt(currentOrderIndex);
+                NextOrder();
                 if (orders.Count > 0)
                 {
                     currentOrderIndex++;

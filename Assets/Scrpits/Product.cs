@@ -13,6 +13,11 @@ public class Product : MonoBehaviour
     [SerializeField] private float _purchasePrice;
     [SerializeField] private float _salePrice;
     public bool _isPickable;
+    public bool _isPicking;
+    public GameObject pallet;
+    private FixedJoint boxJoint;
+
+
     private void Start()
     {
         _TheProduct = product.TheProduct;
@@ -20,7 +25,10 @@ public class Product : MonoBehaviour
         _endTime = product.endTime;
         _purchasePrice = product.purchasePrice;
         _salePrice = product.salePrice;
-        _isPickable = product.isPickable; 
+        _isPickable = product.isPickable;
+
+        boxJoint = GetComponent<FixedJoint>();
+        boxJoint.connectedBody = pallet.GetComponent<Rigidbody>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -29,6 +37,7 @@ public class Product : MonoBehaviour
         {
             if(_isPickable == true)
             {
+                _isPicking = true;
                 this.transform.SetParent(other.transform);
                 this.GetComponent<Rigidbody>().freezeRotation = true;
 

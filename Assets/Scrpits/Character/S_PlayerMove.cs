@@ -25,7 +25,7 @@ public class S_PlayerMove : Entity
     public float gripTime;
     public float exhausted;
     [SerializeField] private float productWeight;
-    public bool isThePallet;
+    [SerializeField] private Collicionpallet isThePallet;
     public event Action thisPallet;
     void Start()
     {
@@ -66,7 +66,7 @@ public class S_PlayerMove : Entity
         {
             Debug.Log("lpm ********");
         }
-        if(isThePallet)
+        if(isThePallet != null)
         {
             thisPallet?.Invoke();
         }
