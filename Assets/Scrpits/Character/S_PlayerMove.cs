@@ -64,9 +64,12 @@ public class S_PlayerMove : Entity
 
         if(loAgarre == true && gripTime >= exhausted)
         {
-            Debug.Log("lpm ********");
+            boxProduct.GetComponent<Rigidbody>().useGravity = true;
+            boxProduct.GetComponent<Rigidbody>().isKinematic = false;
+            loAgarre = false;
+
         }
-        if(isThePallet != null)
+        if (isThePallet != null)
         {
             thisPallet?.Invoke();
         }

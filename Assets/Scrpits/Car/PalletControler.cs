@@ -14,20 +14,24 @@ public class PalletControler : MonoBehaviour
     [SerializeField]private List<string> palletLineName = new List<string>();
     [SerializeField]private List<int> palletLineQuantity = new List<int>();
     [SerializeField] private Collicionpallet pointCol;
-
+    private bool hasReceivedOrder = false;
     public void AddProduct(GameObject gameObject)
     {
         isProductList.Add(gameObject);
     }
     public void AddOrderData(OrderData orderData)
     {
-        for(int i = 0; i < orderData.lineNames.Count; i++)
+        if (!hasReceivedOrder)
         {
-            string lineName = orderData.lineNames[i];
-            int lineQuantity = orderData.lineQuantity[i];
+            for (int i = 0; i < orderData.lineNames.Count; i++)
+            {
+                string lineName = orderData.lineNames[i];
+                int lineQuantity = orderData.lineQuantity[i];
 
-            palletLineName.Add(lineName);
-            palletLineQuantity.Add(lineQuantity);
+                palletLineName.Add(lineName);
+                palletLineQuantity.Add(lineQuantity);
+            }
+            hasReceivedOrder= true;
         }
     }
     private void OnTriggerEnter(Collider other)

@@ -14,8 +14,6 @@ public class Product : MonoBehaviour
     [SerializeField] private float _salePrice;
     public bool _isPickable;
     public bool _isPicking;
-    public GameObject pallet;
-    private FixedJoint boxJoint;
 
 
     private void Start()
@@ -26,9 +24,6 @@ public class Product : MonoBehaviour
         _purchasePrice = product.purchasePrice;
         _salePrice = product.salePrice;
         _isPickable = product.isPickable;
-
-        boxJoint = GetComponent<FixedJoint>();
-        boxJoint.connectedBody = pallet.GetComponent<Rigidbody>();
     }
     private void OnTriggerEnter(Collider other)
     {

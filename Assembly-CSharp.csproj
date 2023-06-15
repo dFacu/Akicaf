@@ -56,7 +56,7 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scrpits\PalletControler.cs" />
+    <Compile Include="Assets\Scrpits\Car\PalletControler.cs" />
     <Compile Include="Assets\Scrpits\Character\S_PlayerMove.cs" />
     <Compile Include="Assets\Scrpits\ProductBase.cs" />
     <Compile Include="Assets\Scrpits\Character\Jefe.cs" />
@@ -65,11 +65,11 @@
     <Compile Include="Assets\Scrpits\PcManager.cs" />
     <Compile Include="Assets\Scrpits\GateControl.cs" />
     <Compile Include="Assets\Scrpits\OrderGenerator.cs" />
-    <Compile Include="Assets\Scrpits\ForkliftControler.cs" />
+    <Compile Include="Assets\Scrpits\Car\ForkliftControler.cs" />
     <Compile Include="Assets\Scrpits\DiaControl.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <Compile Include="Assets\Scrpits\Collicionpallet.cs" />
-    <Compile Include="Assets\Scrpits\Hands.cs" />
+    <Compile Include="Assets\Scrpits\Car\Collicionpallet.cs" />
+    <Compile Include="Assets\Scrpits\Character\Hands.cs" />
     <Compile Include="Assets\Scrpits\ButtonC.cs" />
     <Compile Include="Assets\Scrpits\Product.cs" />
     <Compile Include="Assets\Scrpits\GameManager.cs" />
