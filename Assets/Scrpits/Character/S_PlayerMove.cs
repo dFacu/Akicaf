@@ -67,6 +67,8 @@ public class S_PlayerMove : Entity
             boxProduct.GetComponent<Rigidbody>().useGravity = true;
             boxProduct.GetComponent<Rigidbody>().isKinematic = false;
             loAgarre = false;
+            boxProduct.transform.SetParent(null);
+
 
         }
         if (isThePallet != null)

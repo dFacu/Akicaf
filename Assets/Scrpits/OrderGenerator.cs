@@ -132,8 +132,12 @@ public class OrderGenerator : MonoBehaviour
                 OrderData currentOrder = orders[currentOrderIndex];
 
                 palletScript.AddOrderData(currentOrder);
-                orders.RemoveAt(currentOrderIndex);
-                NextOrder();
+                if(palletScript.hasReceivedOrder == true)
+                {
+                    orders.RemoveAt(currentOrderIndex);
+                    NextOrder();
+                }
+
                 if (orders.Count > 0)
                 {
                     currentOrderIndex++;

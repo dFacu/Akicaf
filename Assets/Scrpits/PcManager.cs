@@ -8,54 +8,85 @@ public class PcManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] productSpawn;
     [SerializeField] private Transform purchasedProductPoint;
-    [SerializeField] private bool iBoughtSomeProduct = false;
-    [SerializeField] private float waitTime = 5f;
-    [SerializeField] private float inicioTime = 0f;
+    [SerializeField] private Transform[] purchasedProductPointMunicion;
+    [SerializeField] private Transform[] purchasedProductPointLibro;
+    [SerializeField] private Transform[] purchasedProductPointPomela;
+    [SerializeField] private Transform[] purchasedProductPointPestaña;
 
-    [SerializeField] private ButtonC button;
+
+
+
+
     [SerializeField] private S_PlayerMove player;
     private Dictionary<string, int> ControlStock = new Dictionary<string, int>();
-    private void Awake()
-    {
-        button.OnButtonPressed.AddListener(buyProduct);
-    }
+    [SerializeField] GameObject Shop;
+    // compra del producto y lo deja en la base
+
     private void Update()
     {
-        inicioTime += Time.deltaTime;
-
-        // tiempo de espera para comprar 
-        if(inicioTime > waitTime)
-        {
-            button.n_isPressed = false;
-        }
-        if(inicioTime > waitTime && iBoughtSomeProduct == true)
-        {
-            iBoughtSomeProduct = false;
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            sale();
-        }
     }
-    
-    // compra del producto y lo deja en la base
-    public void buyProduct()
+    private void Awake()
     {
-        for(int i = 0; i < 4; i++)
+        Shop.SetActive(false);
+    }
+    public void buyProductLibro()
+    {
+        for (int i = 0; i < purchasedProductPointLibro.Length; i++)
         {
-            Instantiate(productSpawn[i], purchasedProductPoint);
+             Instantiate(productSpawn[0], purchasedProductPointLibro[i]);
+             Debug.Log("Estock modificado");
+
         }
-        Debug.Log("Estock modificado");
-        iBoughtSomeProduct = true;
-        Debug.Log("Lo llama (buttonC) y lo recibe (PcManager)");
-        inicioTime = 0;
 
     }
+    public void buyProductoMunicion()
+    {
+        for (int i = 0; i < purchasedProductPointMunicion.Length; i++)
+        {
+            Instantiate(productSpawn[0], purchasedProductPointMunicion[i]);
+            Debug.Log("Estock modificado");
 
+        }
+    }
+    public void buyProductoPestaña()
+    {
+        for (int i = 0; i < purchasedProductPointPestaña.Length; i++)
+        {
+            Instantiate(productSpawn[0], purchasedProductPointPestaña[i]);
+            Debug.Log("Estock modificado");
 
+        }
+    }
+    public void buyProductoPomela()
+    {
+        for (int i = 0; i < purchasedProductPointPomela.Length; i++)
+        {
+            Instantiate(productSpawn[0], purchasedProductPointPomela[i]);
+            Debug.Log("Estock modificado");
 
+        }
+    }
+    public void buyProductoPallet()
+    {
+        Instantiate(productSpawn[4], purchasedProductPoint);
+        Debug.Log("Estock modificado");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Shop.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Shop.SetActive(false);
+        }
+    }
     void sale()
     {
         foreach (KeyValuePair<string, int> kvp in ControlStock)

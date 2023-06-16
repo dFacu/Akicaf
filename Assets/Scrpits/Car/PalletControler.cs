@@ -14,7 +14,7 @@ public class PalletControler : MonoBehaviour
     [SerializeField]private List<string> palletLineName = new List<string>();
     [SerializeField]private List<int> palletLineQuantity = new List<int>();
     [SerializeField] private Collicionpallet pointCol;
-    private bool hasReceivedOrder = false;
+    public bool hasReceivedOrder = false;
     public void AddProduct(GameObject gameObject)
     {
         isProductList.Add(gameObject);

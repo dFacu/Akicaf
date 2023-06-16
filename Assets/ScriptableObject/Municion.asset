@@ -16,6 +16,6 @@ MonoBehaviour:
   ProductName: Municion
   weight: 27
   endTime: 10
-  purchasePrice: 0
+  purchasePrice: 24
   salePrice: 0
   isPickable: 0

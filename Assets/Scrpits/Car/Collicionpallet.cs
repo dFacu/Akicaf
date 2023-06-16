@@ -14,7 +14,6 @@ public class Collicionpallet : MonoBehaviour
         {
             if (isHoldingPallet == true)
             {
-
                 DropPallet();
             }
             else if (isHoldingPallet == false)

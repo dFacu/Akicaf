@@ -16,6 +16,6 @@ MonoBehaviour:
   ProductName: Libro
   weight: 12
   endTime: 30
-  purchasePrice: 0
+  purchasePrice: 10
   salePrice: 0
   isPickable: 0

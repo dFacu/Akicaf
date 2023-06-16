@@ -16,6 +16,6 @@ MonoBehaviour:
   ProductName: "Pesta\xF1a"
   weight: 17
   endTime: 25
-  purchasePrice: 0
+  purchasePrice: 13
   salePrice: 0
   isPickable: 0

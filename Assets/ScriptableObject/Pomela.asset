@@ -16,6 +16,6 @@ MonoBehaviour:
   ProductName: Pomela
   weight: 20
   endTime: 15
-  purchasePrice: 0
+  purchasePrice: 18
   salePrice: 0
   isPickable: 0
